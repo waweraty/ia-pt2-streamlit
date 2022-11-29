@@ -48,4 +48,4 @@ if uploaded_file is not None:
 	#st.write(os.listdir())
 	if st.button('Go'): 
 		st.write('Image Loaded')
-		st.write(pred)
+		st.write(pred[0].round)
