@@ -3,7 +3,10 @@ from numpy import load
 from numpy import expand_dims
 from matplotlib import pyplot
 from PIL import Image, ImageDraw, ImageFont
-from helper import *
+import tensorflow as tf
+from tensorflow import keras
+import cv2
+import numpy as np
 import os
 
 st.header('GRIP Team')
@@ -11,6 +14,22 @@ st.header("Stage predictor using images")
 st.write("Upload image to get its corresponding stage")
 
 uploaded_file = st.file_uploader("Choose an image...")
+
+
+def verify_image(image):
+    img_width, img_height = 150, 150
+
+    model = keras.models.load_model('Classifier')
+
+	img = keras.preprocessing.image.load_img(image)
+	img = tf.image.central_crop(img, central_fraction=0.5)
+	img = tf.image.resize(img,[img_width, img_height])
+	img = keras.utils.img_to_array(img)
+	img = np.expand_dims(img, axis = 0)
+
+	res=model.predict(img)
+
+    return res
 
 
 def load_image(filename, size=(512,512)):
@@ -32,9 +51,9 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	pred=verify_image(uploaded_file)
+	pred_class=verify_image(uploaded_file)
 
 	#st.write(os.listdir())
 	if st.button('Go'): 
 		st.write('Image Loaded')
-		st.write(str(pred[0][0].round()))
+		st.write(str(pred_class[0][0].round()))
