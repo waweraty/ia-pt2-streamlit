@@ -3,4 +3,4 @@ numpy
 matplotlib
 colour
 tensorflow
-opencv-python
+opencv-python-headless
