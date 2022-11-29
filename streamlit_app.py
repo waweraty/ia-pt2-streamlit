@@ -15,20 +15,14 @@ st.write("Upload image to get its corresponding stage")
 
 uploaded_file = st.file_uploader("Choose an image...")
 
-
-def verify_image(image):
-    img_width, img_height = 150, 150
-
-    model = keras.models.load_model('Classifier')
-
+def verify_class(image,model=keras.models.load_model('Classifier')):   
+	img_width, img_height = 150, 150
 	img = keras.preprocessing.image.load_img(image)
 	img = tf.image.central_crop(img, central_fraction=0.5)
 	img = tf.image.resize(img,[img_width, img_height])
 	img = keras.utils.img_to_array(img)
 	img = np.expand_dims(img, axis = 0)
-
 	res=model.predict(img)
-
     return res
 
 
@@ -51,7 +45,7 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	pred_class=verify_image(uploaded_file)
+	pred_class=verify_class(uploaded_file)
 
 	#st.write(os.listdir())
 	if st.button('Go'): 
