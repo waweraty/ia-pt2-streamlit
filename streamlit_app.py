@@ -37,7 +37,7 @@ if uploaded_file is not None:
 
 	img_width, img_height = 150, 150
 	
-	img = cv2.imread(upimage)
+	img = keras.preprocessing.image.load_img(upimage)
 	img = tf.image.central_crop(img, central_fraction=0.5)
 	img = tf.image.resize(img,[img_width, img_height])
 	img = keras.utils.img_to_array(img)
