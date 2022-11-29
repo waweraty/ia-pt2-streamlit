@@ -3,7 +3,7 @@ from numpy import load
 from numpy import expand_dims
 from matplotlib import pyplot
 from PIL import Image, ImageDraw, ImageFont
-from helper.py import *
+from helper import *
 import os
 
 st.header('GRIP Team')
