@@ -2,3 +2,5 @@ pillow
 numpy
 matplotlib
 colour
+tensorflow
+opencv
