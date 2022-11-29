@@ -4,3 +4,4 @@ matplotlib
 colour
 tensorflow
 opencv-python-headless
+pandas
