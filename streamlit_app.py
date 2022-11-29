@@ -49,6 +49,8 @@ if uploaded_file is not None:
 	pred_class=verify_class(uploaded_file)
 
 	#st.write(os.listdir())
-	if st.button('Go'): 
-		st.write('Image Loaded')
-		st.write(str(pred_class[0][0].round()))
+	if st.button('Go'):
+		if int(pred_class[0][0].round()==0):
+			st.write('Image loaded is not suitable for the prediction model')
+		elif int(pred_class[0][0].round()==1):
+			st.write(f'Predicted Stage:\nOur model:{0}\nVGG:{0}')
