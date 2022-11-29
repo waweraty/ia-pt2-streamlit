@@ -33,7 +33,7 @@ if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
 	upimage = Image.open(uploaded_file)	
 
-	st.upimage(uploaded_file, caption='Input Image', use_column_width=True)
+	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
 	img_width, img_height = 150, 150
 	
