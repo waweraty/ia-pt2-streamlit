@@ -3,10 +3,7 @@ from numpy import load
 from numpy import expand_dims
 from matplotlib import pyplot
 from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-import tensorflow as tf
-from tensorflow import keras
-import cv2
+from helper.py import *
 import os
 
 st.header('GRIP Team')
@@ -27,7 +24,7 @@ def load_image(filename, size=(512,512)):
 	pixels = expand_dims(pixels, 0)
 	return pixels
 
-model = keras.models.load_model('Classifier')
+
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
@@ -35,15 +32,7 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	img_width, img_height = 150, 150
-	
-	img = keras.preprocessing.image.load_img(uploaded_file)
-	img = tf.image.central_crop(img, central_fraction=0.5)
-	img = tf.image.resize(img,[img_width, img_height])
-	img = keras.utils.img_to_array(img)
-	img = np.expand_dims(img, axis = 0)
-
-	pred=model.predict(img)
+	pred=verify_image(uploaded_file)
 
 	#st.write(os.listdir())
 	if st.button('Go'): 
