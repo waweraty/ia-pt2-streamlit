@@ -3,4 +3,4 @@ numpy
 matplotlib
 colour
 tensorflow
-opencv
+opencv-python
