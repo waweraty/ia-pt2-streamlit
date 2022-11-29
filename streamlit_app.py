@@ -53,4 +53,4 @@ if uploaded_file is not None:
 		if int(pred_class[0][0].round()==0):
 			st.write('Image loaded is not suitable for the prediction model')
 		elif int(pred_class[0][0].round()==1):
-			st.write(f'Predicted Stage:\nOur model:{0}\nVGG:{0}')
+			st.write('Predicted Stage:','Our model:',0,'VGG:',0)
