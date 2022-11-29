@@ -52,5 +52,9 @@ if uploaded_file is not None:
 	if st.button('Go'):
 		if int(pred_class[0][0].round()==0):
 			st.write('Image loaded is not suitable for the prediction model')
+			d = st.date_input("Please select the date of the Stage to load")
+			st.write('The closest Stage to your date is:', d)
 		elif int(pred_class[0][0].round()==1):
-			st.write('Predicted Stage:','Our model:',0,'VGG:',0)
+			st.write('Predicted Stage:')
+			st.write('Our model:',0)
+			st.write('VGG:',0)
