@@ -23,7 +23,8 @@ def verify_class(image,model=keras.models.load_model('Classifier')):
 	img = keras.utils.img_to_array(img)
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
-    return res
+	
+	return res
 
 
 def load_image(filename, size=(512,512)):
