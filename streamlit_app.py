@@ -24,10 +24,12 @@ def load_image(filename, size=(512,512)):
 	pixels = expand_dims(pixels, 0)
 	return pixels
 
-if st.button('Go'):
-	if uploaded_file is not None:
-		#src_image = load_image(uploaded_file)
-		image = Image.open(uploaded_file)	
+
+if uploaded_file is not None:
+	#src_image = load_image(uploaded_file)
+	image = Image.open(uploaded_file)	
 		
-		st.image(uploaded_file, caption='Input Image', use_column_width=True)
-		#st.write(os.listdir())    
+	st.image(uploaded_file, caption='Input Image', use_column_width=True)
+	#st.write(os.listdir())
+	if st.button('Go'): 
+		st.write('Image Loaded')
