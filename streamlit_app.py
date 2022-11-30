@@ -74,5 +74,7 @@ if uploaded_file is not None:
 			st.write('The closest Stage to your date is: ',s[0])
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
+		st.write(uploaded_file)
+		st.write('Real:',0)
 		st.write('Our model:',0)
 		st.write('VGG:',0)
