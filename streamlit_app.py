@@ -67,4 +67,4 @@ if uploaded_file is not None:
 
 		predVGG=predict_value(uploaded_file,VGG)
 		st.write('Our model:',0)
-		st.write('VGG:',predVGG[0])
+		st.write('VGG:',predVGG[0][0])
