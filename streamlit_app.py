@@ -47,8 +47,8 @@ def predict_value(image,model):
 
 	st.write(df.loc[df['Filename'].isin([image.name])])
 
-	#img = np.expand_dims(img, axis = 0)
-	res=model.predict(test_generator2)
+	img = np.expand_dims(img, axis = 0)
+	res=model.predict(img/255)
 	
 	return res
 
