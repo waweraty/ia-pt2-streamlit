@@ -25,10 +25,11 @@ st.write("Upload image to get its corresponding stage")
 uploaded_file = st.file_uploader("Choose an image...")
 
 def plotImages(images_arr):
-    fig, axes = pyplot.subplots(1, 5, figsize=(20,20))
-    axes = axes.flatten()
-    for img, ax in zip( images_arr, axes):
-        ax.imshow(img)
+	fig, axes = pyplot.subplots(1, 5, figsize=(20,20))
+	axes = axes.flatten()
+	for img, ax in zip( images_arr, axes):
+		ax.imshow(img)
+
 	st.pyplot(fig)
 
 def predict_value(image,model):   
