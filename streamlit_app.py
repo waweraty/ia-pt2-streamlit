@@ -15,6 +15,7 @@ df=pd.read_csv('small_df.csv')
 df.index = pd.to_datetime(df.index)
 df.sort_index(inplace = True)
 df2 = df[~df.index.duplicated(keep='first')]
+df2
 
 
 st.header('GRIP Team')
