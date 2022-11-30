@@ -13,19 +13,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from keras.preprocessing.image import ImageDataGenerator
 
-df=pd.read_csv('small_df.csv')
-df = df.set_index('Time')
-df.index = pd.to_datetime(df.index)
-df.sort_index(inplace = True)
-df2 = df[~df.index.duplicated(keep='first')]
-
-st.header('GRIP Team')
-st.header("Stage predictor using images")
-st.write("Upload image to get its corresponding stage")
-
-uploaded_file = st.file_uploader("Choose an image...")
-
-@st.cache
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
@@ -38,6 +26,18 @@ def predict_value(image,model):
 	res=model.predict(img/255)
 	
 	return res
+
+df=pd.read_csv('small_df.csv')
+df = df.set_index('Time')
+df.index = pd.to_datetime(df.index)
+df.sort_index(inplace = True)
+df2 = df[~df.index.duplicated(keep='first')]
+
+st.header('GRIP Team')
+st.header("Stage predictor using images")
+st.write("Upload image to get its corresponding stage")
+
+uploaded_file = st.file_uploader("Choose an image...")
 
 
 
