@@ -13,7 +13,9 @@ import pandas as pd
 
 df=pd.read_csv('small_df.csv')
 df['Time'] = pd.to_datetime(df['Time'])
-st.write(df['Time'][0])
+df.sort_index(inplace = True)
+df2 = df[~df.index.duplicated(keep='first')]
+
 
 st.header('GRIP Team')
 st.header("Stage predictor using images")
@@ -62,13 +64,10 @@ if uploaded_file is not None:
 		min_value=datetime.date(2012, 6, 9),
 		max_value=datetime.date(2019, 10, 11))
 		t = st.time_input('Select the time for that date',datetime.time(0, 0))
-		#st.write('The closest Stage to your date is:', d,t)
-		
+		#st.write('The closest Stage to your date is:', d,t)		
 		date=datetime.datetime.combine(d,t)
-		st.write(str(date))
-		df.index.searchsorted(date)
 		
-		s = df.loc[df.index.unique()[df.index.unique().get_loc(datetime.timestamp(date), method='nearest')]]
+		s = df2.loc[df2.index.get_indexer([date], method='nearest') ]
 		st.write('The closest Stage to your date is: ',s['Stage'])
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
