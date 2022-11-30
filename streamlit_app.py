@@ -35,21 +35,19 @@ def predict_value(image,model):
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
 	
-	st.image(img)
-
 	return res
 
 def predict_class(image,model):   
-	img_width, img_height = 150, 150
+	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
 	#img = tf.image.central_crop(img, central_fraction=0.5)
 	img = tf.image.resize(img,[img_width, img_height])
-	#st.image(img, caption='Input Image', use_column_width=True)
-	img = keras.utils.img_to_array(img)
+	img = tf.image.resize(img,[150, 150])
+	#img = keras.utils.img_to_array(img)
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
 	
-	return res	
+	return res,img
 
 Classifier=keras.models.load_model('Classifier')
 VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
@@ -61,8 +59,11 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	pred_class=predict_class(uploaded_file,Classifier)
+	pred_class,img2=predict_class(uploaded_file,Classifier)
 
+	upimage2 = Image.open(img2)	
+
+	st.image(img2, caption='Transformed Image', use_column_width=True)
 
 	if int(pred_class[0][0].round()==0):
 		st.write('Image loaded is not suitable for the prediction model')
