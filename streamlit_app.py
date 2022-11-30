@@ -25,7 +25,7 @@ st.write("Upload image to get its corresponding stage")
 uploaded_file = st.file_uploader("Choose an image...")
 
 def predict_value(image,model):   
-	img_width, img_height = 150, 150
+	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
 	img = tf.image.central_crop(img, central_fraction=0.5)
 	img = tf.image.resize(img,[img_width, img_height])
