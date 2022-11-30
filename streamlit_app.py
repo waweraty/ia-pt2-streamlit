@@ -13,7 +13,6 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from keras.preprocessing.image import ImageDataGenerator
 
-@st.cache
 df=pd.read_csv('small_df.csv')
 df = df.set_index('Time')
 df.index = pd.to_datetime(df.index)
@@ -26,6 +25,7 @@ st.write("Upload image to get its corresponding stage")
 
 uploaded_file = st.file_uploader("Choose an image...")
 
+@st.cache
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
