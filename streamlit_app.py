@@ -75,6 +75,6 @@ if uploaded_file is not None:
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
 		if uploaded_file.name in df['Filename']:
-			st.write('Real:',df.loc[uploaded_file.name])
+			st.write('Real:',df.loc[df['Filename'].isin([uploaded_file.name])]['Stage'][0])
 		st.write('Our model:',0)
 		st.write('VGG:',0)
