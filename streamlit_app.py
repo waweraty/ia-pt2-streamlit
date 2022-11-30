@@ -79,12 +79,12 @@ if uploaded_file is not None:
 else:
 	sampleimg='StateLineWeir_20180915_Farrell_160.jpg'
 	upimage=Image.open(f'SampleIMG/{sampleimg}')
-	st.image(upimage, caption='Input Image', use_column_width=True)
+	st.image(upimage, caption='Sample Image', use_column_width=True)
 
 	st.write('Predicted Stage:')
 	st.write('Real:',df.loc[df['Filename'].isin([sampleimg])]['Stage'][0])
 
-	predVGG=predict_value(sampleimg,VGG)
-	predCNN=predict_value(sampleimg,CNN)
+	predVGG=predict_value(f'SampleIMG/{sampleimg}',VGG)
+	predCNN=predict_value(f'SampleIMG/{sampleimg}',CNN)
 	st.write('Our model:',round(predCNN[0][0],2))
 	st.write('VGG:',round(predVGG[0][0],2))
