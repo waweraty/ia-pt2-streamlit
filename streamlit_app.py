@@ -5,6 +5,7 @@ from matplotlib import pyplot
 from PIL import Image, ImageDraw, ImageFont
 import tensorflow as tf
 from tensorflow import keras
+import datetime
 import cv2
 import numpy as np
 import os
@@ -52,7 +53,9 @@ if uploaded_file is not None:
 	if st.button('Go'):
 		if int(pred_class[0][0].round()==0):
 			st.write('Image loaded is not suitable for the prediction model')
-			d = st.date_input("Please select the date of the Stage to load")
+			d = st.date_input("Please select the date of the Stage to load",
+			min_value=datetime.date(2012, 6, 9),max_value=datetime.date(2019, 10, 11))
+			t = st.time_input('Select the time for that date')
 			st.write('The closest Stage to your date is:', d)
 		elif int(pred_class[0][0].round()==1):
 			st.write('Predicted Stage:')
