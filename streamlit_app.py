@@ -61,11 +61,11 @@ if uploaded_file is not None:
 			min_value=datetime.date(2012, 6, 9),
 			max_value=datetime.date(2019, 10, 11))
 			t = st.time_input('Select the time for that date',datetime.time(0, 0))
-			st.write('The closest Stage to your date is:', d,t)
-			if st.button('Get Stage'):
-				date=datetime.datetime.combine(d,t)
-				s = df.iloc[df.index.get_loc(date, method='nearest')]
-				st.write('The closest Stage to your date is: ',s['Stage'])
+			#st.write('The closest Stage to your date is:', d,t)
+
+			date=datetime.datetime.combine(d,t)
+			s = df.iloc[df.index.get_loc(date, method='nearest')]
+			st.write('The closest Stage to your date is: ',s['Stage'])
 		elif int(pred_class[0][0].round()==1):
 			st.write('Predicted Stage:')
 			st.write('Our model:',0)
