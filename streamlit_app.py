@@ -29,8 +29,7 @@ def plotImages(images_arr):
     axes = axes.flatten()
     for img, ax in zip( images_arr, axes):
         ax.imshow(img)
-    pyplot.tight_layout()
-    pyplot.show()
+	st.pyplot(fig)
 
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
