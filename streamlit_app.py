@@ -62,7 +62,7 @@ if uploaded_file is not None:
 			max_value=datetime.date(2019, 10, 11))
 			t = st.time_input('Select the time for that date',datetime.time(0, 0))
 			st.write('The closest Stage to your date is:', d,t)
-			if st.button('Go'):
+			if st.button('Get Stage'):
 				date=datetime.datetime.combine(d,t)
 				s = df.iloc[df.index.get_loc(date, method='nearest')]
 				st.write('The closest Stage to your date is: ',s['Stage'])
