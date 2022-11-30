@@ -28,7 +28,7 @@ def predict_value(image,model):
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
 	#img = tf.image.central_crop(img, central_fraction=0.5)
-	img = tf.image.resize(img,[img_width, img_height])
+	#img = tf.image.resize(img,[img_width, img_height])
 	img = tf.image.resize(img,[150, 150])
 	#st.image(img, caption='Input Image', use_column_width=True)
 	#img = keras.utils.img_to_array(img)
@@ -41,7 +41,7 @@ def predict_class(image,model):
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
 	#img = tf.image.central_crop(img, central_fraction=0.5)
-	img = tf.image.resize(img,[img_width, img_height])
+	#img = tf.image.resize(img,[img_width, img_height])
 	img = tf.image.resize(img,[150, 150])
 	#img = keras.utils.img_to_array(img)
 	img = np.expand_dims(img, axis = 0)
