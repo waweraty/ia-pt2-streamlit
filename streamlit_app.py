@@ -9,6 +9,9 @@ import datetime
 import cv2
 import numpy as np
 import os
+import pandas as pd
+
+df=pd.read_csv('small_df.csv')
 
 st.header('GRIP Team')
 st.header("Stage predictor using images")
@@ -59,6 +62,10 @@ if uploaded_file is not None:
 			max_value=datetime.date(2019, 10, 11))
 			t = st.time_input('Select the time for that date',datetime.time(0, 0))
 			st.write('The closest Stage to your date is:', d,t)
+			if st.button('Go'):
+				date=datetime.datetime.combine(d,t)
+				s = df.iloc[df.index.get_loc(date, method='nearest')]
+				st.write('The closest Stage to your date is: ',s['Stage'])
 		elif int(pred_class[0][0].round()==1):
 			st.write('Predicted Stage:')
 			st.write('Our model:',0)
