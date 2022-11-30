@@ -73,5 +73,5 @@ if uploaded_file is not None:
 
 		predVGG=predict_value(uploaded_file,VGG)
 		predCNN=predict_value(uploaded_file,CNN)
-		st.write('Our model:',predCNN[0][0])
-		st.write('VGG:',predVGG[0][0])
+		st.write('Our model:',round(predCNN[0][0],2))
+		st.write('VGG:',round(predVGG[0][0],2))
