@@ -34,7 +34,7 @@ def predict_value(image,model):
 	#img = keras.utils.img_to_array(img)
 
 	img = np.expand_dims(img, axis = 0)
-	res=model.predict(img/256)
+	res=model.predict(img/260)
 	
 	return res
 
