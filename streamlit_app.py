@@ -24,12 +24,6 @@ st.write("Upload image to get its corresponding stage")
 
 uploaded_file = st.file_uploader("Choose an image...")
 
-def plotImages(images_arr):
-	fig, ax = pyplot.subplots()
-	ax.imshow(images_arr)
-
-	st.pyplot(fig)
-
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
@@ -41,7 +35,7 @@ def predict_value(image,model):
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
 	
-	plotImages(img)
+	st.image(img)
 
 	return res
 
