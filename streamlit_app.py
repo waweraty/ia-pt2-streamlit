@@ -58,7 +58,7 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	pred_class=predict_value(uploaded_file,Classifier)
+	pred_class=predict_class(uploaded_file,Classifier)
 
 
 	if int(pred_class[0][0].round()==0):
