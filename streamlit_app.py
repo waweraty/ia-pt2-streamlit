@@ -66,7 +66,7 @@ if uploaded_file is not None:
 
 		date=datetime.datetime.combine(d,t)
 		st.write(type(date))
-		s = df.loc[df.index.unique()[df.index.unique().get_loc(date, method='nearest')]]
+		s = df.loc[df.index.unique()[df.index.unique().get_loc(datetime.timestamp(date), method='nearest')]]
 		st.write('The closest Stage to your date is: ',s['Stage'])
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
