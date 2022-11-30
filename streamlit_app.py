@@ -29,7 +29,7 @@ def predict_value(image,model):
 	img = keras.preprocessing.image.load_img(image)
 	img = tf.image.central_crop(img, central_fraction=0.5)
 	img = tf.image.resize(img,[img_width, img_height])
-	st.image(img, caption='Input Image', use_column_width=True)
+	#st.image(img, caption='Input Image', use_column_width=True)
 	img = keras.utils.img_to_array(img)
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
