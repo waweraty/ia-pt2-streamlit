@@ -35,7 +35,7 @@ def predict_value(image,model):
 	return res
 
 Classifier=keras.models.load_model('Classifier')
-VGG=keras.models.load_model('VGG')
+#VGG=keras.models.load_model('VGG')
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
