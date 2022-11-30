@@ -12,7 +12,7 @@ import os
 import pandas as pd
 
 df=pd.read_csv('small_df.csv')
-df['Time'] = pd.to_datetime(df['Time'])
+df.index = pd.to_datetime(df.index)
 df.sort_index(inplace = True)
 df2 = df[~df.index.duplicated(keep='first')]
 
