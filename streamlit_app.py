@@ -70,7 +70,7 @@ if uploaded_file is not None:
 		if st.button('Select'):	
 			date=datetime.datetime.combine(d,t)
 			idx=df2.index.get_indexer([date], method='nearest')
-			s = df2.iloc[idx,:1]
+			s = df2.iloc[idx,1]
 			st.write('The closest Stage to your date is: ',s)
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
