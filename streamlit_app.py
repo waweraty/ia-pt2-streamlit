@@ -37,6 +37,7 @@ def predict_value(image,model):
 
 Classifier=keras.models.load_model('Classifier')
 VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
+CNN=keras.models.load_model('CNN', custom_objects = {"r2_score": r2_score})
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
@@ -66,5 +67,6 @@ if uploaded_file is not None:
 			st.write('Real:',df.loc[df['Filename'].isin([uploaded_file.name])]['Stage'][0])
 
 		predVGG=predict_value(uploaded_file,VGG)
-		st.write('Our model:',0)
+		predCNN=predict_value(uploaded_file,CNN)
+		st.write('Our model:',predCNN[0][0])
 		st.write('VGG:',predVGG[0][0])
