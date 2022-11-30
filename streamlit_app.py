@@ -13,6 +13,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from keras.preprocessing.image import ImageDataGenerator
 
+@st.cache
 df=pd.read_csv('small_df.csv')
 df = df.set_index('Time')
 df.index = pd.to_datetime(df.index)
