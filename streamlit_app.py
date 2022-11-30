@@ -54,22 +54,21 @@ if uploaded_file is not None:
 
 	pred_class=verify_class(uploaded_file)
 
-	#st.write(os.listdir())
-	if st.button('Go'):
-		if int(pred_class[0][0].round()==0):
-			st.write('Image loaded is not suitable for the prediction model')
-			d = st.date_input("Please select the date of the Stage to load",
-			datetime.date(2012, 6, 9),
-			min_value=datetime.date(2012, 6, 9),
-			max_value=datetime.date(2019, 10, 11))
-			t = st.time_input('Select the time for that date',datetime.time(0, 0))
-			#st.write('The closest Stage to your date is:', d,t)
 
-			date=datetime.datetime.combine(d,t)
-			date
-			s = df.loc[df.index.unique()[df.index.unique().get_loc(date, method='nearest')]]
-			st.write('The closest Stage to your date is: ',s['Stage'])
-		elif int(pred_class[0][0].round()==1):
-			st.write('Predicted Stage:')
-			st.write('Our model:',0)
-			st.write('VGG:',0)
+	if int(pred_class[0][0].round()==0):
+		st.write('Image loaded is not suitable for the prediction model')
+		d = st.date_input("Please select the date of the Stage to load",
+		datetime.date(2012, 6, 9),
+		min_value=datetime.date(2012, 6, 9),
+		max_value=datetime.date(2019, 10, 11))
+		t = st.time_input('Select the time for that date',datetime.time(0, 0))
+		#st.write('The closest Stage to your date is:', d,t)
+
+		date=datetime.datetime.combine(d,t)
+		st.write(type(date))
+		s = df.loc[df.index.unique()[df.index.unique().get_loc(date, method='nearest')]]
+		st.write('The closest Stage to your date is: ',s['Stage'])
+	elif int(pred_class[0][0].round()==1):
+		st.write('Predicted Stage:')
+		st.write('Our model:',0)
+		st.write('VGG:',0)
