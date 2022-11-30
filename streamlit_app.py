@@ -65,8 +65,8 @@ def predict_class(image,model):
 	return res
 
 Classifier=keras.models.load_model('Classifier')
-VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
 CNN=keras.models.load_model('CNN', custom_objects = {"r2_score": r2_score})
+VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
