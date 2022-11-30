@@ -13,7 +13,7 @@ import pandas as pd
 from sklearn.metrics import r2_score
 from keras.preprocessing.image import ImageDataGenerator
 
-@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None},ttl=6*3600)
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
