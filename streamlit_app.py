@@ -23,7 +23,7 @@ st.write("Upload image to get its corresponding stage")
 
 uploaded_file = st.file_uploader("Choose an image...")
 
-def verify_class(image,model=keras.models.load_model('Classifier')):   
+def predict_value(image,model):   
 	img_width, img_height = 150, 150
 	img = keras.preprocessing.image.load_img(image)
 	img = tf.image.central_crop(img, central_fraction=0.5)
@@ -34,6 +34,8 @@ def verify_class(image,model=keras.models.load_model('Classifier')):
 	
 	return res
 
+Classifier=keras.models.load_model('Classifier')
+VGG=keras.models.load_model('VGG')
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
@@ -41,7 +43,7 @@ if uploaded_file is not None:
 
 	st.image(uploaded_file, caption='Input Image', use_column_width=True)
 
-	pred_class=verify_class(uploaded_file)
+	pred_class=predict_value(uploaded_file,Classifier)
 
 
 	if int(pred_class[0][0].round()==0):
@@ -61,5 +63,7 @@ if uploaded_file is not None:
 		st.write('Predicted Stage:')
 		if uploaded_file.name in df['Filename'].unique():
 			st.write('Real:',df.loc[df['Filename'].isin([uploaded_file.name])]['Stage'][0])
+
+		predVGG=predict_value(uploaded_file,VGG)
 		st.write('Our model:',0)
-		st.write('VGG:',0)
+		st.write('VGG:',predVGG)
