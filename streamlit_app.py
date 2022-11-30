@@ -28,24 +28,10 @@ uploaded_file = st.file_uploader("Choose an image...")
 def predict_value(image,model):   
 	img_width, img_height = 512, 512
 	img = keras.preprocessing.image.load_img(image)
-	#img = tf.image.central_crop(img, central_fraction=0.5)
-	#img = tf.image.resize(img,[img_width, img_height])
+	img = tf.image.central_crop(img, central_fraction=0.5)
+	img = tf.image.resize(img,[img_width, img_height])
 	img = tf.image.resize(img,[150, 150])
-	#st.image(img, caption='Input Image', use_column_width=True)
 	#img = keras.utils.img_to_array(img)
-
-	test_datagen2 = ImageDataGenerator(rescale=1./255)
-
-	test_generator2 = test_datagen2.flow_from_dataframe(
-    df.loc[df['Filename'].isin([image.name])],
-    x_col='Filename',
-    y_col='Stage',
-    target_size=(150,150,3),
-    class_mode='raw',
-    batch_size=32
-	)
-
-	st.write(df.loc[df['Filename'].isin([image.name])])
 
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img/255)
