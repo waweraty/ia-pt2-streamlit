@@ -12,9 +12,8 @@ import os
 import pandas as pd
 
 df=pd.read_csv('small_df.csv')
-df.index = pd.to_datetime(df.index)
-df.sort_index(inplace = True)
-df2 = df[~df.index.duplicated(keep='first')]
+df['Time'] = pd.to_datetime(df['Time'])
+df2 = df[~df['Time'].duplicated(keep='first')]
 df2
 
 
@@ -68,8 +67,8 @@ if uploaded_file is not None:
 		#st.write('The closest Stage to your date is:', d,t)	
 		if st.button('Select'):	
 			date=datetime.datetime.combine(d,t)
-			st.write(df2.index.get_indexer([date], method='nearest'))
-			s = df2.loc[df2.index.get_indexer([date], method='nearest') ]
+			st.write(df2['Time'].get_indexer([date], method='nearest'))
+			s = df2.loc[df2['Time'].get_indexer([date], method='nearest') ]
 			st.write('The closest Stage to your date is: ',s['Stage'])
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
