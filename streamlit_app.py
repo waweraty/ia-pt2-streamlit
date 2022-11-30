@@ -10,6 +10,7 @@ import cv2
 import numpy as np
 import os
 import pandas as pd
+from sklearn.metrics import r2_score
 
 df=pd.read_csv('small_df.csv')
 df = df.set_index('Time')
@@ -35,7 +36,7 @@ def predict_value(image,model):
 	return res
 
 Classifier=keras.models.load_model('Classifier')
-VGG=keras.models.load_model('VGG')
+VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
 
 if uploaded_file is not None:
 	#src_image = load_image(uploaded_file)
