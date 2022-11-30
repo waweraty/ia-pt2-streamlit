@@ -61,8 +61,6 @@ if uploaded_file is not None:
 
 	pred_class,img2=predict_class(uploaded_file,Classifier)
 
-	upimage2 = Image.open(img2)	
-
 	st.image(img2, caption='Transformed Image', use_column_width=True)
 
 	if int(pred_class[0][0].round()==0):
