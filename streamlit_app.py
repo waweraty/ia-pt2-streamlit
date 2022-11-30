@@ -77,12 +77,12 @@ if uploaded_file is not None:
 		st.write('Our model:',round(predCNN[0][0],2))
 		st.write('VGG:',round(predVGG[0][0],2))
 else:
-	upimage=Image.open('SampleIMG/StateLineWeir_20180915_Farrell_160.jpg')
+	sampleimg='StateLineWeir_20180915_Farrell_160.jpg'
+	upimage=Image.open(f'SampleIMG/{sampleimg}')
 	st.image(upimage, caption='Input Image', use_column_width=True)
 
 	st.write('Predicted Stage:')
-	if uploaded_file.name in df['Filename'].unique():
-		st.write('Real:',df.loc[df['Filename'].isin([uploaded_file.name])]['Stage'][0])
+	st.write('Real:',df.loc[df['Filename'].isin([sampleimg])]['Stage'][0])
 
 	predVGG=predict_value(uploaded_file,VGG)
 	predCNN=predict_value(uploaded_file,CNN)
