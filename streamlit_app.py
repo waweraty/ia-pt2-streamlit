@@ -84,7 +84,7 @@ else:
 	st.write('Predicted Stage:')
 	st.write('Real:',df.loc[df['Filename'].isin([sampleimg])]['Stage'][0])
 
-	predVGG=predict_value(uploaded_file,VGG)
-	predCNN=predict_value(uploaded_file,CNN)
+	predVGG=predict_value(sampleimg,VGG)
+	predCNN=predict_value(sampleimg,CNN)
 	st.write('Our model:',round(predCNN[0][0],2))
 	st.write('VGG:',round(predVGG[0][0],2))
