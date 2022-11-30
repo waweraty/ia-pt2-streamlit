@@ -47,7 +47,7 @@ def predict_class(image,model):
 	img = np.expand_dims(img, axis = 0)
 	res=model.predict(img)
 	
-	return res,img
+	return res
 
 Classifier=keras.models.load_model('Classifier')
 VGG=keras.models.load_model('VGG', custom_objects = {"r2_score": r2_score})
@@ -59,9 +59,8 @@ if uploaded_file is not None:
 
 	st.image(upimage, caption='Input Image', use_column_width=True)
 
-	pred_class,img2=predict_class(uploaded_file,Classifier)
+	pred_class=predict_class(uploaded_file,Classifier)
 
-	st.image(img2, clamp=True, caption='Transformed Image', use_column_width=True)
 
 	if int(pred_class[0][0].round()==0):
 		st.write('Image loaded is not suitable for the prediction model')
