@@ -61,7 +61,7 @@ if uploaded_file is not None:
 
 	pred_class,img2=predict_class(uploaded_file,Classifier)
 
-	st.image(img2, clamp=True, channels='RGB', caption='Transformed Image', use_column_width=True)
+	st.image(img2, clamp=True, caption='Transformed Image', use_column_width=True)
 
 	if int(pred_class[0][0].round()==0):
 		st.write('Image loaded is not suitable for the prediction model')
