@@ -13,6 +13,7 @@ import pandas as pd
 
 df=pd.read_csv('small_df.csv')
 df['Time'] = pd.to_datetime(df['Time'])
+type(df['Time'][0])
 
 st.header('GRIP Team')
 st.header("Stage predictor using images")
