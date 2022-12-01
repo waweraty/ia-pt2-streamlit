@@ -66,7 +66,7 @@ if uploaded_file is not None:
 			date=datetime.datetime.combine(d,t)
 			idx=df2.index.get_indexer([date], method='nearest')
 			s = df2.iloc[idx,1]
-			st.write('The closest Stage to your date is: ',s[0], ' which corresponds to: ',s.index())
+			st.write('The closest Stage to your date is: ',s[0], ' which corresponds to: ',s.index[0])
 	elif int(pred_class[0][0].round()==1):
 		st.write('Predicted Stage:')
 		if uploaded_file.name in df['Filename'].unique():
