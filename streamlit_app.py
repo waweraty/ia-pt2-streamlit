@@ -22,7 +22,7 @@ def get_weights():
 	for m in urls.keys():
 		url=urls[m]
 		filename = url.split('/')[-1]
-		filename= m+'/variables.'+filename.split('.')[1]
+		filename= m+'/variables/variables.'+filename.split('.')[1]
 		if not os.path.exists(filename):
 			urllib.request.urlretrieve(url, filename)
 
