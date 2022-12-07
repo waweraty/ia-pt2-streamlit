@@ -25,5 +25,5 @@ Para la segunda fase, en la que se trabajará con imágenes, se espera que estas
 
 Para el desarrollo del primer modelo no se necesita usar un enfoque orientado a Big data, ya que solo tenemos un CSV, pero cuando se deban procesar las imágenes y sacar sus atributos, se deberá considerar el segundo enfoque.
 
-
+Model weights: https://drive.google.com/drive/folders/1eDGM7q7y_Jy2_bUuCQBfJTGhf1cp_P-H?usp=share_link
 
