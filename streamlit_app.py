@@ -11,7 +11,20 @@ import numpy as np
 import os
 import pandas as pd
 from sklearn.metrics import r2_score
-from keras.preprocessing.image import ImageDataGenerator
+import urllib.request
+
+@st.cache
+def get_weights():
+	urls={'Classifier':'https://github.com/waweraty/ia-pt2-streamlit/releases/download/1.0.0/Classvariables.data-00000-of-00001',
+		'CNN':'https://github.com/waweraty/ia-pt2-streamlit/releases/download/1.0.0/CNNvariables.data-00000-of-00001',
+		'VGG':'https://github.com/waweraty/ia-pt2-streamlit/releases/download/1.0.0/VGGvariables.data-00000-of-00001'}
+
+	for m in urls.keys():
+		url=urls[m]
+		filename = url.split('/')[-1]
+		filename= m+'/variables.'+filename.split('.')[1]
+		if not os.path.exists(filename):
+			urllib.request.urlretrieve(url, filename)
 
 @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None},ttl=6*3600)
 def predict_value(image,model):   
