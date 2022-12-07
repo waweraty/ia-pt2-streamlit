@@ -56,6 +56,7 @@ st.write("Upload image to get its corresponding stage")
 uploaded_file = st.file_uploader("Choose an image...")
 
 df, df2=load_data('small_df.csv')
+get_weights()
 
 Classifier=keras.models.load_model('Classifier')
 CNN=keras.models.load_model('CNN', custom_objects = {"r2_score": r2_score})
