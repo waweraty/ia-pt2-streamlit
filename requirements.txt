@@ -2,7 +2,7 @@ pillow
 numpy
 matplotlib
 colour
-tensorflow
+tensorflow<=2.11
 opencv-python-headless
 pandas
 scikit-learn
